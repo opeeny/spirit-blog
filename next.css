@@ -1,0 +1,107 @@
+.title {
+	border-color: red;
+}
+.gridContainer {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto auto auto;
+	grid-gap: 10px;
+	width: 990px;
+	margin-top: 50px;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	background-color: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 8px;
+	/* box-shadow: 0px 1px rgb(129, 129, 129); */
+}
+.spirit {
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: justify;
+}
+.write {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: -80px;
+	
+}
+body {
+	background-color: whitesmoke;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.writeBlog {
+	border: none;
+	margin-left: 580px;
+	background-color: rgb(78, 173, 250);
+	color: white;
+	font-size: 16px;
+	border-radius: 5px;
+	text-align: center;
+}
+.parent {
+	display: flex;
+	justify-content: space-between;
+}
+.blog {
+	max-width: 400px;
+}
+.sendButton {
+	border: none;
+	padding: 10px;
+	background-color:rgb(78, 173, 250);;
+	color: white;
+	font-size: 16px;
+	border-radius: 5px;
+}
+#title {
+	width: 100%;
+	padding: 10px 10px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+#body {
+	border-radius: 4px;
+}
+.story {
+	width: auto;
+	background-color: white;
+	border: 4px;
+	padding-left: 20px;
+}
+.storyDate {
+	color: grey;
+}
+
+.storyDelete {
+	color: red;
+	border: none;
+	background-color: white;
+	font-size: 20px;
+}
+
+.storyContent {
+	color: rgb(29, 28, 28);
+}
+
+.storyTitle {
+	padding-top: 10px;
+}
+.footer {
+	position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #333;
+   color: white;
+   text-align: center
+}
+.logo-title {
+	float: left;
+	margin-left: 0px;
+}

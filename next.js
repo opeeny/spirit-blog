@@ -10,9 +10,9 @@ const typedTitle = document.createElement('h1');
 const typedBlog = document.createElement('p');
 const spirit = document.querySelector('.spirit');
 const writeBlog = document.querySelector('#writeBlog');
-const writeDiv = document.querySelector('.write');
+const write = document.querySelector('.write');
 
-writeDiv.style.display = 'none';
+write.style.display = 'none';
 const options = {
 	weekday: 'long',
 	year: 'numeric',
@@ -86,7 +86,7 @@ postForm.addEventListener('submit', (e) => {
 		typedContent.innerHTML = '';
 		title.value = '';
 		content.value = '';
-		writeDiv.style.display = 'none';
+		write.style.display = 'none';
 		spirit.style.display = 'block';
 	} else {
 		if (title.value === '') {
@@ -99,18 +99,7 @@ postForm.addEventListener('submit', (e) => {
 	}
 });
 
-// deleteBlog.addEventListener('click', () => {
-// 	console.log('I am deleting');
-// 	localStorage.clear();
-// 	while (typedContent.firstChild) {
-// 		typedContent.removeChild(typedContent.firstChild);
-// 	}
-// 	while (blogs.firstChild) {
-// 		blogs.removeChild(blogDisplay.firstChild);
-// 	}
-// });
-
 writeBlog.addEventListener('click', () => {
 	spirit.style.display = 'none';
-	writeDiv.style.display = 'block';
+	write.style.display = 'block';
 });

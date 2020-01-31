@@ -39,31 +39,55 @@ content.addEventListener('input', (e) => {
 });
 
 const renderStory = (blog, index) => {
-	const storyDiv = document.createElement('div');
-	storyDiv.classList.add('story');
+	const allPostsDiv = document.createElement('div');
+	allPostsDiv.classList.add('story');
 	let date = new Date();
-	storyDiv.innerHTML = `
+	allPostsDiv.innerHTML = `
 		<h4 class="storyTitle">${blog.title}</h4>
 		<p class="storyDate">${date.toLocaleDateString(undefined, options)}</p>
 		<p class="storyContent">${blog.body}</p>
-		<button class="storyDelete" id="${index}"><i class="fas fa-trash-alt"></i></button>`;
-	return storyDiv
+		<button class="storyDelete" id="${index}"><i class="fas fa-trash-alt"></i></button>
+		<button class="storyEdit" id="${index}"><i class="fas fa-pen"></i></i></button>`;
+	return allPostsDiv
 }
 
 const allBlogs = (data) => {
-	spirit.innerHTML = '';
+	spirit.innerHTML = 'nnnnn';
 	console.log(data);
 	for (let [ index, blog ] of data.entries()) {
 		if (Object.keys(blog).length !== 0 && (blog.title != '' && blog.body != '')) {
-			let storyDiv = renderStory(blog,index)
-			spirit.appendChild(storyDiv);
-			const storyDelButton = storyDiv.querySelector('.storyDelete');
+			let allPostsDiv = renderStory(blog,index)
+			spirit.appendChild(allPostsDiv);
+			const storyDelButton = allPostsDiv.querySelector('.storyDelete');
+			const storyUpdateButton = allPostsDiv.querySelector('.storyEdit');
 			storyDelButton.addEventListener('click', () => {
 				let buttonId = Number(storyDelButton.getAttribute('id'));
-				posts.splice(buttonId, 1);
+			    posts.splice(buttonId, 1);
 				console.log(data);
 				localStorage.setItem('Post', JSON.stringify(posts));
 				allBlogs(posts);
+			});
+			storyUpdateButton.addEventListener('click', () => {
+				alert('edit');
+				const yourPosts = JSON.parse(localStorage.getItem('Post'));
+				console.log('wee', yourPosts);
+				if(yourPosts) {
+					document.querySelector('#numberPosts').innerHTML = yourPosts.length;
+					//console.log('wee', yourPosts);
+					var tableBody='';
+					let i = 0;
+					yourPosts.forEach(val=>{
+						i+=1;
+						tableBody=tableBody+'<tr>'+
+						'<td>'+i+'</td>'+
+						'<td>'+blog.title+'</td>'+
+						'<td>'+blog.content+'</td>'+
+						'<td>'+ '<a class="uk-icon-link" uk-icon="trash" onclick="getId(this)" href="#modal-center" uk-toggle></a>'+   '<a href="#" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" onclick="getId(this);edit()"></a>'+'</td>'+
+					'</tr>';
+					});
+				}
+				
+
 			});
 		} else {
 			console.log('something');
@@ -95,7 +119,7 @@ postForm.addEventListener('submit', (e) => {
 		if (content.value === '') {
 			content.classList.add('title');
 		}
-		alert('Both fields are required');
+		alert('PROVIDE BOTH BLOG TITLE AND BODY');
 	}
 });
 

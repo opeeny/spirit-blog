@@ -68,23 +68,16 @@ const allBlogs = (data) => {
 				allBlogs(posts);
 			});
 			storyUpdateButton.addEventListener('click', () => {
-				alert('edit');
 				const yourPosts = JSON.parse(localStorage.getItem('Post'));
-				console.log('wee', yourPosts);
+				//console.log('wee', yourPosts);
 				if(yourPosts) {
 					document.querySelector('#numberPosts').innerHTML = yourPosts.length;
 					//console.log('wee', yourPosts);
-					var tableBody='';
-					let i = 0;
-					yourPosts.forEach(val=>{
-						i+=1;
-						tableBody=tableBody+'<tr>'+
-						'<td>'+i+'</td>'+
-						'<td>'+blog.title+'</td>'+
-						'<td>'+blog.content+'</td>'+
-						'<td>'+ '<a class="uk-icon-link" uk-icon="trash" onclick="getId(this)" href="#modal-center" uk-toggle></a>'+   '<a href="#" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" onclick="getId(this);edit()"></a>'+'</td>'+
-					'</tr>';
-					});
+					typedContent.innerHTML= 'aaaaaaaaaa';
+					write.style.display = 'block';
+					title.value = blog.title;
+					content.value = blog.body;
+					console.log(title.value, 'in btn', content.value);
 				}
 				
 
@@ -96,11 +89,11 @@ const allBlogs = (data) => {
 };
 
 postForm.addEventListener('submit', (e) => {
-	// Adds a particular blog to the blog array
+	//prevent default behaviour of the form
 	e.preventDefault();
 
-	title.classList.remove('title');
-	content.classList.remove('title');
+	//title.classList.remove('title');
+	//content.classList.remove('title');
 	if (title.value != '' && content.value != '') {
 		posts.unshift(ourPost);
 		ourPost = {};
@@ -124,6 +117,6 @@ postForm.addEventListener('submit', (e) => {
 });
 
 writeBlog.addEventListener('click', () => {
-	spirit.style.display = 'none';
-	write.style.display = 'block';
+	//spirit.style.display = 'none';
+	write.style.display = '';
 });
